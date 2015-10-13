@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:KSTableViewManager"
+      name = "KSTableViewManager">
+      <FileRef
+         location = "group:KSTableViewManager.h">
+      </FileRef>
+      <FileRef
+         location = "group:KSTableViewManager.m">
+      </FileRef>
+      <FileRef
+         location = "group:KSTableViewManager+Indexes.h">
+      </FileRef>
+      <FileRef
+         location = "group:KSTableViewManager+Indexes.m">
+      </FileRef>
+      <FileRef
+         location = "group:KSTableViewManager+RowGroup.h">
+      </FileRef>
+      <FileRef
+         location = "group:KSTableViewManager+RowGroup.m">
+      </FileRef>
+      <FileRef
+         location = "group:KSTableViewManagerRow.h">
+      </FileRef>
+      <Group
+         location = "container:KSTableViewManager/Helpers"
+         name = "Helpers">
+         <FileRef
+            location = "group:KSCellHeightResolver.h">
+         </FileRef>
+         <FileRef
+            location = "group:KSCellHeightResolver.m">
+         </FileRef>
+      </Group>
+   </Group>
+</Workspace>
