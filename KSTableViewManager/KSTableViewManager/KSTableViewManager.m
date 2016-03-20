@@ -71,12 +71,6 @@
     self.tableView.dataSource = self;
 }
 
-- (void)addRow:(id <KSTableViewManagerRow>)row
-{
-    [self registerCellWithRow:row];
-    [self addToCollection:row];
-}
-
 - (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation
 {
     [self registerCellWithRow:row];

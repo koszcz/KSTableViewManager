@@ -17,7 +17,6 @@
 - (instancetype)initWithTableView:(UITableView *)tableView;
 - (void)attachDelegates;
 
-- (void)addRow:(id <KSTableViewManagerRow>)row;
 
 - (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation;
 
