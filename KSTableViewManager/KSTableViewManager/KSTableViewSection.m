@@ -4,10 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KSTableViewManager.h"
-#import "KSTableViewManagerRow.h"
+#import "KSTableViewSection.h"
+#import "KSTableViewRow.h"
 
-@interface KSTableViewManager()
+@interface KSTableViewSection ()
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *collection;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation KSTableViewManager
+@implementation KSTableViewSection
 
 - (instancetype)initWithTableView:(UITableView *)tableView
 {
@@ -30,13 +30,13 @@
     return self;
 }
 
-- (void)addToCollection:(id<KSTableViewManagerRow>)row
+- (void)addToCollection:(id<KSTableViewRow>)row
 {
     [self.collection addObject:row];
     [self.collectionWithGuides addObject:row];
 }
 
-- (void)addToCollection:(id<KSTableViewManagerRow>)row atIndex:(NSUInteger)index
+- (void)addToCollection:(id<KSTableViewRow>)row atIndex:(NSUInteger)index
 {
     NSUInteger elementIndex = self.collectionWithGuides.count;
 
@@ -57,7 +57,7 @@
     [self.collectionWithGuides removeObjectAtIndex:elementIndex];
 }
 
-- (void)replaceAtIndex:(NSUInteger)index withRow:(id <KSTableViewManagerRow>)row
+- (void)replaceAtIndex:(NSUInteger)index withRow:(id <KSTableViewRow>)row
 {
     id element = self.collection[index];
     NSUInteger elementIndex = [self.collectionWithGuides indexOfObject:element];
@@ -71,7 +71,7 @@
     self.tableView.dataSource = self;
 }
 
-- (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation
+- (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewRow>)row animation:(UITableViewRowAnimation)animation
 {
     [self registerCellWithRow:row];
     [self.tableView beginUpdates];
@@ -80,13 +80,13 @@
     [self.tableView endUpdates];
 }
 
-- (void)removeRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation
+- (void)removeRow:(id <KSTableViewRow>)row animation:(UITableViewRowAnimation)animation
 {
     NSUInteger index = [self.collection indexOfObject:row];
     [self removeRowAtIndex:index animation:animation];
 }
 
-- (void)removeRow:(id<KSTableViewManagerRow>)row
+- (void)removeRow:(id<KSTableViewRow>)row
 {
     [self removeRow:row animation:UITableViewRowAnimationAutomatic];
 }
@@ -113,17 +113,17 @@
     [self.tableView reloadData];
 }
 
-- (void)insertRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation
+- (void)insertRow:(id <KSTableViewRow>)row animation:(UITableViewRowAnimation)animation
 {
     [self insertRow:row atIndex:self.collection.count animation:animation];
 }
 
-- (void)insertRow:(id <KSTableViewManagerRow>)row
+- (void)insertRow:(id <KSTableViewRow>)row
 {
     [self insertRow:row animation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)insertRow:(id <KSTableViewManagerRow>)row atIndex:(NSUInteger)index animation:(UITableViewRowAnimation)animation
+- (void)insertRow:(id <KSTableViewRow>)row atIndex:(NSUInteger)index animation:(UITableViewRowAnimation)animation
 {
     [self registerCellWithRow:row];
     [self.tableView beginUpdates];
@@ -132,12 +132,12 @@
     [self.tableView endUpdates];
 }
 
-- (void)insertRow:(id<KSTableViewManagerRow>)row atIndex:(NSUInteger)index
+- (void)insertRow:(id<KSTableViewRow>)row atIndex:(NSUInteger)index
 {
     [self insertRow:row atIndex:index animation:UITableViewRowAnimationAutomatic];
 }
 
-- (UITableViewCell *)cellForRow:(id<KSTableViewManagerRow>)row
+- (UITableViewCell *)cellForRow:(id<KSTableViewRow>)row
 {
     __block UITableViewCell *cell;
     NSInteger indexOfRow = [self.collection indexOfObject:row];
@@ -157,20 +157,20 @@
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
-- (void)scrollToRow:(id <KSTableViewManagerRow>)row animated:(BOOL)animated
+- (void)scrollToRow:(id <KSTableViewRow>)row animated:(BOOL)animated
 {
     NSUInteger index = [self.collection indexOfObject:row];
     [self scrollToIndex:index animated:animated];
 }
 
-- (void)reloadRow:(id <KSTableViewManagerRow>)row
+- (void)reloadRow:(id <KSTableViewRow>)row
 {
     NSUInteger index = [self.collection indexOfObject:row];
     NSIndexPath *indexPath = [self indexPathForIndex:index];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)registerCellWithRow:(id <KSTableViewManagerRow>)row
+- (void)registerCellWithRow:(id <KSTableViewRow>)row
 {
     NSString *reuseId = [self rowReuseId:row.class];
     if ([row respondsToSelector:@selector(nibForCell)]) {
@@ -217,7 +217,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<KSTableViewManagerRow> row = [self rowForIndexPath:indexPath];
+    id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     if ([row respondsToSelector:@selector(estimatedCellHeight)]) {
         return [row estimatedCellHeight];
     } else {
@@ -227,13 +227,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<KSTableViewManagerRow> row = [self rowForIndexPath:indexPath];
+    id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     return [row cellHeight];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<KSTableViewManagerRow> row = [self rowForIndexPath:indexPath];
+    id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     UITableViewCell *tableViewCell = [tableView dequeueReusableCellWithIdentifier:[self rowReuseId:row.class]];
     [row configureCell:tableViewCell];
     return tableViewCell;
@@ -241,7 +241,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<KSTableViewManagerRow> row = [self rowForIndexPath:indexPath];
+    id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     if ([row respondsToSelector:@selector(didSelectCell)]) {
         [row didSelectCell];
     }
@@ -249,7 +249,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<KSTableViewManagerRow> row = [self rowForIndexPath:indexPath];
+    id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     if ([row respondsToSelector:@selector(willDisplayCell)]) {
         [row willDisplayCell];
     }
@@ -274,7 +274,7 @@
     return self.collection.copy;
 }
 
-- (id<KSTableViewManagerRow>)rowForIndexPath:(NSIndexPath *)indexPath
+- (id<KSTableViewRow>)rowForIndexPath:(NSIndexPath *)indexPath
 {
     return self.collection[(NSUInteger) indexPath.row];
 }

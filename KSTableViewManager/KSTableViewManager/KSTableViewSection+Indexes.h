@@ -4,9 +4,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KSTableViewManager.h"
+#import "KSTableViewSection.h"
 
-@interface KSTableViewManager (Indexes)
+@interface KSTableViewSection (Indexes)
 
 - (NSArray *)indexesForRowClass:(Class)className;
 

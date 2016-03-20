@@ -15,9 +15,9 @@
 		1D92407E1C9EB64E007183A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D92407C1C9EB64E007183A9 /* LaunchScreen.storyboard */; };
 		1D9240891C9EB64E007183A9 /* KSTableViewManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240881C9EB64E007183A9 /* KSTableViewManagerTests.m */; };
 		1D9240941C9EB64E007183A9 /* KSTableViewManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240931C9EB64E007183A9 /* KSTableViewManagerUITests.m */; };
-		1D9240A81C9EB87C007183A9 /* KSTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240A21C9EB87C007183A9 /* KSTableViewManager.m */; };
-		1D9240A91C9EB87C007183A9 /* KSTableViewManager+Indexes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240A41C9EB87C007183A9 /* KSTableViewManager+Indexes.m */; };
-		1D9240AA1C9EB87C007183A9 /* KSTableViewManager+RowGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240A61C9EB87C007183A9 /* KSTableViewManager+RowGroup.m */; };
+		1D9240A81C9EB87C007183A9 /* KSTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240A21C9EB87C007183A9 /* KSTableViewSection.m */; };
+		1D9240A91C9EB87C007183A9 /* KSTableViewSection+Indexes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240A41C9EB87C007183A9 /* KSTableViewSection+Indexes.m */; };
+		1D9240AA1C9EB87C007183A9 /* KSTableViewSection+RowGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9240A61C9EB87C007183A9 /* KSTableViewSection+RowGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +54,13 @@
 		1D92408F1C9EB64E007183A9 /* KSTableViewManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSTableViewManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D9240931C9EB64E007183A9 /* KSTableViewManagerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSTableViewManagerUITests.m; sourceTree = "<group>"; };
 		1D9240951C9EB64E007183A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D9240A11C9EB87C007183A9 /* KSTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTableViewManager.h; sourceTree = "<group>"; };
-		1D9240A21C9EB87C007183A9 /* KSTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTableViewManager.m; sourceTree = "<group>"; };
-		1D9240A31C9EB87C007183A9 /* KSTableViewManager+Indexes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSTableViewManager+Indexes.h"; sourceTree = "<group>"; };
-		1D9240A41C9EB87C007183A9 /* KSTableViewManager+Indexes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSTableViewManager+Indexes.m"; sourceTree = "<group>"; };
-		1D9240A51C9EB87C007183A9 /* KSTableViewManager+RowGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSTableViewManager+RowGroup.h"; sourceTree = "<group>"; };
-		1D9240A61C9EB87C007183A9 /* KSTableViewManager+RowGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSTableViewManager+RowGroup.m"; sourceTree = "<group>"; };
-		1D9240A71C9EB87C007183A9 /* KSTableViewManagerRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTableViewManagerRow.h; sourceTree = "<group>"; };
+		1D9240A11C9EB87C007183A9 /* KSTableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTableViewSection.h; sourceTree = "<group>"; };
+		1D9240A21C9EB87C007183A9 /* KSTableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTableViewSection.m; sourceTree = "<group>"; };
+		1D9240A31C9EB87C007183A9 /* KSTableViewSection+Indexes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSTableViewSection+Indexes.h"; sourceTree = "<group>"; };
+		1D9240A41C9EB87C007183A9 /* KSTableViewSection+Indexes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSTableViewSection+Indexes.m"; sourceTree = "<group>"; };
+		1D9240A51C9EB87C007183A9 /* KSTableViewSection+RowGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSTableViewSection+RowGroup.h"; sourceTree = "<group>"; };
+		1D9240A61C9EB87C007183A9 /* KSTableViewSection+RowGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSTableViewSection+RowGroup.m"; sourceTree = "<group>"; };
+		1D9240A71C9EB87C007183A9 /* KSTableViewRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTableViewRow.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,13 +154,13 @@
 		BCE8D6BDD829C710233FF900 /* KSTableViewManager */ = {
 			isa = PBXGroup;
 			children = (
-				1D9240A11C9EB87C007183A9 /* KSTableViewManager.h */,
-				1D9240A21C9EB87C007183A9 /* KSTableViewManager.m */,
-				1D9240A31C9EB87C007183A9 /* KSTableViewManager+Indexes.h */,
-				1D9240A41C9EB87C007183A9 /* KSTableViewManager+Indexes.m */,
-				1D9240A51C9EB87C007183A9 /* KSTableViewManager+RowGroup.h */,
-				1D9240A61C9EB87C007183A9 /* KSTableViewManager+RowGroup.m */,
-				1D9240A71C9EB87C007183A9 /* KSTableViewManagerRow.h */,
+				1D9240A11C9EB87C007183A9 /* KSTableViewSection.h */,
+				1D9240A21C9EB87C007183A9 /* KSTableViewSection.m */,
+				1D9240A31C9EB87C007183A9 /* KSTableViewSection+Indexes.h */,
+				1D9240A41C9EB87C007183A9 /* KSTableViewSection+Indexes.m */,
+				1D9240A51C9EB87C007183A9 /* KSTableViewSection+RowGroup.h */,
+				1D9240A61C9EB87C007183A9 /* KSTableViewSection+RowGroup.m */,
+				1D9240A71C9EB87C007183A9 /* KSTableViewRow.h */,
 			);
 			path = KSTableViewManager;
 			sourceTree = "<group>";
@@ -295,12 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D9240AA1C9EB87C007183A9 /* KSTableViewManager+RowGroup.m in Sources */,
+				1D9240AA1C9EB87C007183A9 /* KSTableViewSection+RowGroup.m in Sources */,
 				1D9240761C9EB64E007183A9 /* ViewController.m in Sources */,
 				1D9240731C9EB64E007183A9 /* AppDelegate.m in Sources */,
-				1D9240A91C9EB87C007183A9 /* KSTableViewManager+Indexes.m in Sources */,
+				1D9240A91C9EB87C007183A9 /* KSTableViewSection+Indexes.m in Sources */,
 				1D9240701C9EB64E007183A9 /* main.m in Sources */,
-				1D9240A81C9EB87C007183A9 /* KSTableViewManager.m in Sources */,
+				1D9240A81C9EB87C007183A9 /* KSTableViewSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

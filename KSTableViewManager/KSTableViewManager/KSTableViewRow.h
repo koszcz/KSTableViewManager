@@ -6,10 +6,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol KSTableViewManagerRow <NSObject>
+@protocol KSTableViewRow <NSObject>
 
 - (CGFloat)cellHeight;
-- (void)configureCell:(id)cell;
+- (void)configureCell:(__kindof UITableViewCell *)cell;
 
 @optional
 
