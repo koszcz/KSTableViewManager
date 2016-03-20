@@ -5,45 +5,21 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "KSTableViewActionable.h"
 
 @protocol KSTableViewRow;
 
-@interface KSTableViewSection : NSObject<UITableViewDelegate, UITableViewDataSource>
+@interface KSTableViewSection : NSObject<KSTableViewActionable>
 
-@property (nonatomic, weak) id<UIScrollViewDelegate> scrollViewDelegate;
 @property (nonatomic, readonly) NSArray *rows;
-@property (nonatomic, readonly) UITableView *tableView;
 
-- (instancetype)initWithTableView:(UITableView *)tableView;
-- (void)attachDelegates;
++ (KSTableViewSection *)sectionWithTableView:(UITableView *)view position:(NSUInteger)position;
 
-- (void)insertRow:(id <KSTableViewRow>)row;
-- (void)insertRow:(id <KSTableViewRow>)row atIndex:(NSUInteger)index;
-- (void)insertRow:(id <KSTableViewRow>)row animation:(UITableViewRowAnimation)animation;
-- (void)insertRow:(id <KSTableViewRow>)row atIndex:(NSUInteger)index animation:(UITableViewRowAnimation)animation;
-
-- (void)reloadRow:(id <KSTableViewRow>)row;
-
-- (void)removeRow:(id <KSTableViewRow>)row;
-- (void)removeRowAtIndex:(NSUInteger)index;
-- (void)removeRow:(id <KSTableViewRow>)row animation:(UITableViewRowAnimation)animation;
-- (void)removeRowAtIndex:(NSUInteger)index animation:(UITableViewRowAnimation)animation;
-- (void)removeAllRows;
-
-- (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewRow>)row animation:(UITableViewRowAnimation)animation;
-
-- (UITableViewCell *)cellForRow:(id <KSTableViewRow>)row;
-
-// Scrolling
-
-- (void)scrollToIndex:(NSUInteger)index animated:(BOOL)animated;
-- (void)scrollToRow:(id <KSTableViewRow>)row animated:(BOOL)animated;
-
-// Helper guides
-
-- (void)insertGuideNamed:(NSString *)name;
-- (void)insertGuideNamed:(NSString *)name atIndex:(NSUInteger)index;
-
-- (NSUInteger)indexForRowAfterGuideNamed:(NSString *)name;
+- (NSInteger)numberOfRows;
+- (CGFloat)estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

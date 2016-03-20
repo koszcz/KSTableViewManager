@@ -14,26 +14,27 @@
 
 @property (nonatomic, strong) NSMutableArray *collectionWithGuides;
 
+@property (nonatomic) NSUInteger position;
+
 @end
 
 @implementation KSTableViewSection
 
-- (instancetype)initWithTableView:(UITableView *)tableView
++ (KSTableViewSection *)sectionWithTableView:(UITableView *)view position:(NSUInteger)position
 {
-    self = [super init];
-    if (self) {
-        _collection = [NSMutableArray new];
-        _collectionWithGuides = [NSMutableArray new];
-        _tableView = tableView;
-    }
-
-    return self;
+    KSTableViewSection *section = [self new];
+    section.tableView = view;
+    section.position = position;
+    return section;
 }
 
-- (void)addToCollection:(id<KSTableViewRow>)row
+- (instancetype)init
 {
-    [self.collection addObject:row];
-    [self.collectionWithGuides addObject:row];
+    if (self = [super init]) {
+        _collection = [NSMutableArray new];
+        _collectionWithGuides = [NSMutableArray new];
+    }
+    return self;
 }
 
 - (void)addToCollection:(id<KSTableViewRow>)row atIndex:(NSUInteger)index
@@ -63,12 +64,6 @@
     NSUInteger elementIndex = [self.collectionWithGuides indexOfObject:element];
     self.collection[index] = row;
     self.collectionWithGuides[elementIndex] = row;
-}
-
-- (void)attachDelegates
-{
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
 }
 
 - (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewRow>)row animation:(UITableViewRowAnimation)animation
@@ -210,12 +205,12 @@
 
 #pragma mark - UITableView
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfRows
 {
     return self.collection.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     if ([row respondsToSelector:@selector(estimatedCellHeight)]) {
@@ -225,21 +220,21 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     return [row cellHeight];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
-    UITableViewCell *tableViewCell = [tableView dequeueReusableCellWithIdentifier:[self rowReuseId:row.class]];
+    UITableViewCell *tableViewCell = [self.tableView dequeueReusableCellWithIdentifier:[self rowReuseId:row.class]];
     [row configureCell:tableViewCell];
     return tableViewCell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     if ([row respondsToSelector:@selector(didSelectCell)]) {
@@ -247,7 +242,7 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
     if ([row respondsToSelector:@selector(willDisplayCell)]) {
@@ -255,23 +250,11 @@
     }
 }
 
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.scrollViewDelegate scrollViewDidScroll:scrollView];
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    [self.scrollViewDelegate scrollViewDidEndScrollingAnimation:scrollView];
-}
-
 #pragma mark - Helpers
 
 - (NSArray *)rows
 {
-    return self.collection.copy;
+    return self.collection;
 }
 
 - (id<KSTableViewRow>)rowForIndexPath:(NSIndexPath *)indexPath
@@ -286,20 +269,12 @@
 
 - (NSIndexPath *)indexPathForIndex:(NSUInteger)index
 {
-    return [NSIndexPath indexPathForRow:index inSection:0];
+    return [NSIndexPath indexPathForRow:index inSection:self.position];
 }
 
 - (NSInteger)indexForIndexPath:(NSIndexPath *)indexPath
 {
     return indexPath.row;
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-    self.tableView.dataSource = nil;
-    self.tableView.delegate = nil;
 }
 
 @end
