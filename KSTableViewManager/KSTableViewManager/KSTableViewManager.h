@@ -17,28 +17,27 @@
 - (instancetype)initWithTableView:(UITableView *)tableView;
 - (void)attachDelegates;
 
-
-- (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation;
-
-- (void)removeRow:(id <KSTableViewManagerRow>)row;
-- (void)removeRowAtIndex:(NSUInteger)index;
-- (void)removeAllRows;
-
 - (void)insertRow:(id <KSTableViewManagerRow>)row;
 - (void)insertRow:(id <KSTableViewManagerRow>)row atIndex:(NSUInteger)index;
-
-- (void)removeRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation;
-- (void)removeRowAtIndex:(NSUInteger)index animation:(UITableViewRowAnimation)animation;
-
 - (void)insertRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation;
 - (void)insertRow:(id <KSTableViewManagerRow>)row atIndex:(NSUInteger)index animation:(UITableViewRowAnimation)animation;
 
+- (void)reloadRow:(id <KSTableViewManagerRow>)row;
+
+- (void)removeRow:(id <KSTableViewManagerRow>)row;
+- (void)removeRowAtIndex:(NSUInteger)index;
+- (void)removeRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation;
+- (void)removeRowAtIndex:(NSUInteger)index animation:(UITableViewRowAnimation)animation;
+- (void)removeAllRows;
+
+- (void)replaceRowAtIndex:(NSUInteger)index withRow:(id <KSTableViewManagerRow>)row animation:(UITableViewRowAnimation)animation;
+
 - (UITableViewCell *)cellForRow:(id <KSTableViewManagerRow>)row;
+
+// Scrolling
 
 - (void)scrollToIndex:(NSUInteger)index animated:(BOOL)animated;
 - (void)scrollToRow:(id <KSTableViewManagerRow>)row animated:(BOOL)animated;
-
-- (void)reloadRow:(id <KSTableViewManagerRow>)row;
 
 // Helper guides
 
