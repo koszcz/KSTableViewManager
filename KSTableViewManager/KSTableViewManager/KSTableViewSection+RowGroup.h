@@ -8,7 +8,6 @@
 
 @interface KSTableViewSection (RowGroup)
 
-- (void)addRows:(NSArray *)rows;
 - (void)insertRows:(NSArray *)rows afterRow:(id <KSTableViewRow>)row;
 
 - (void)removeAllRowsAfterRow:(id <KSTableViewRow>)row;

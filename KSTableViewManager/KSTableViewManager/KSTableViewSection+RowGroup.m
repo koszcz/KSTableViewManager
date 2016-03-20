@@ -7,13 +7,6 @@
 
 @implementation KSTableViewSection (RowGroup)
 
-- (void)addRows:(NSArray *)rows
-{
-    [rows enumerateObjectsUsingBlock:^(id<KSTableViewRow> row, NSUInteger idx, BOOL *stop) {
-        [self addRow:row];
-    }];
-}
-
 - (void)insertRows:(NSArray *)rows afterRow:(id <KSTableViewRow>)row
 {
     NSUInteger index = [self.rows indexOfObject:row] + 1;
