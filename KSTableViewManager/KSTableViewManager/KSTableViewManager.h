@@ -7,14 +7,12 @@
 #import <UIKit/UIKit.h>
 
 @protocol KSTableViewManagerRow;
-@class KSCellHeightResolver;
 
 @interface KSTableViewManager : NSObject<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) id<UIScrollViewDelegate> scrollViewDelegate;
 @property (nonatomic, readonly) NSArray *rows;
 @property (nonatomic, readonly) UITableView *tableView;
-@property (nonatomic, strong) KSCellHeightResolver *cellHeightResolver;
 
 - (instancetype)initWithTableView:(UITableView *)tableView;
 - (void)attachDelegates;

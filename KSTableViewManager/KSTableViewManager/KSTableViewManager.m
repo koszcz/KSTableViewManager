@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 #import "KSTableViewManager.h"
 #import "KSTableViewManagerRow.h"
-#import "KSCellHeightResolver.h"
 
 @interface KSTableViewManager()
 
@@ -26,7 +25,6 @@
         _collection = [NSMutableArray new];
         _collectionWithGuides = [NSMutableArray new];
         _tableView = tableView;
-        _cellHeightResolver = [[KSCellHeightResolver alloc] initWithTableView:_tableView];
     }
 
     return self;
@@ -236,7 +234,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<KSTableViewManagerRow> row = [self rowForIndexPath:indexPath];
-    return [self.cellHeightResolver resolveHeightForRow:row];
+    return [row cellHeight];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
