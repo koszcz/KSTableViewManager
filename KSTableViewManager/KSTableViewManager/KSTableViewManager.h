@@ -5,10 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "KSTableViewActionable.h"
 
 @class KSTableViewSection;
 
-@interface KSTableViewManager : NSObject
+@interface KSTableViewManager : NSObject<KSTableViewActionable>
 
 @property (nonatomic, readonly) NSMutableArray<KSTableViewSection *> *sections;
 @property (nonatomic, weak) id<UIScrollViewDelegate> scrollViewDelegate;

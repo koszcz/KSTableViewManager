@@ -173,7 +173,7 @@
     } else if ([row respondsToSelector:@selector(classForCell)]) {
         [self.tableView registerClass:[row classForCell] forCellReuseIdentifier:reuseId];
     } else {
-        NSAssert(false, @"Table View Manager Row should implement one of the following methods: nibForCell, classForCell");
+        NSAssert(false, @"Table View Row should implement one of the following methods: nibForCell, classForCell");
     }
 }
 

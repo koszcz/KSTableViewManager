@@ -8,5 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class KSTableViewManager;
+
 @interface ViewController : UIViewController
 @end

@@ -4,8 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KSTableViewManager.h"
-#import "KSTableViewActionable.h"
+#import "KSTableViewRow.h"
 
-@interface KSTableViewManager (Actionable)<KSTableViewActionable>
+@interface TextRow : NSObject<KSTableViewRow>
+
++ (instancetype)rowWithText:(NSString *)text;
+
 @end
