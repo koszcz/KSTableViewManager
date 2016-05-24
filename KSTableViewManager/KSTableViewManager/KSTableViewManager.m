@@ -19,6 +19,7 @@
     if (self = [super init]) {
         _tableView = tableView;
         _sections = [NSMutableArray new];
+        [self createSection];
     }
     return self;
 }
@@ -32,12 +33,19 @@
 - (KSTableViewSection *)createSection
 {
     NSUInteger position = self.sections.count;
-    KSTableViewSection *section = [KSTableViewSection sectionWithTableView:self.tableView
-                                                                  position:position];
-    [self.tableView beginUpdates];
+    KSTableViewSection *section = [KSTableViewSection sectionWithTableView:self.tableView position:position];
+
+    if (position != 0) {
+        [self.tableView beginUpdates];
+    }
+
     [self.sections addObject:section];
-    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:position] withRowAnimation:UITableViewRowAnimationNone];
-    [self.tableView endUpdates];
+
+    if (position != 0) {
+        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:position] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    }
+
     return section;
 }
 
@@ -185,9 +193,6 @@
 
 - (KSTableViewSection *)firstSection
 {
-    if (self.sections.count == 0) {
-        [self createSection];
-    }
     return [self.sections firstObject];
 }
 
