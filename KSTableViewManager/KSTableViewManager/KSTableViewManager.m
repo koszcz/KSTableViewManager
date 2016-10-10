@@ -92,12 +92,6 @@
     [section willDisplayCell:cell forRowAtIndexPath:indexPath];
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    KSTableViewSection *section = self.sections[(NSUInteger) indexPath.section];
-    [section didEndDisplayingCell:cell forRowAtIndexPath:indexPath];
-}
-
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

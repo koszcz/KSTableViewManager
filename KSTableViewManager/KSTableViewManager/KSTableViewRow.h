@@ -19,6 +19,5 @@
 
 - (void)didSelectCell;
 - (void)willDisplayCell;
-- (void)didEndDisplayingCell:(UITableViewCell *)cell;
 
 @end

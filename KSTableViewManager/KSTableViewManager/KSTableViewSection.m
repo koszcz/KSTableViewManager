@@ -250,14 +250,6 @@
     }
 }
 
-- (void)didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    id<KSTableViewRow> row = [self rowForIndexPath:indexPath];
-    if ([row respondsToSelector:@selector(didEndDisplayingCell:)]) {
-        [row didEndDisplayingCell:cell];
-    }
-}
-
 #pragma mark - Helpers
 
 - (NSArray *)rows
