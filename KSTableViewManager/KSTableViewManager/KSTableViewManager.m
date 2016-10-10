@@ -102,12 +102,23 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.scrollViewDelegate scrollViewDidScroll:scrollView];
+    if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+        [self.scrollViewDelegate scrollViewDidScroll:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    [self.scrollViewDelegate scrollViewDidEndScrollingAnimation:scrollView];
+    if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
+        [self.scrollViewDelegate scrollViewDidEndScrollingAnimation:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+        [self.scrollViewDelegate scrollViewDidEndDecelerating:scrollView];
+    }
 }
 
 #pragma mark - Actionable
